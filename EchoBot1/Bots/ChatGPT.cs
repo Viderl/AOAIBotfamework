@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System;
 using Newtonsoft.Json;
 
 namespace EchoBot1.Bots
@@ -51,21 +52,13 @@ namespace EchoBot1.Bots
                 {
                     new ChatMessage {
                         role = Role.system ,
-                        content = @"
-                            假設你是一個專業的導遊人員，對於客戶非常有禮貌、也能夠安撫客戶的抱怨情緒。
-                            請檢視底下的客戶訊息，以最親切有禮的方式回應。
-
-                            但回應時，請注意以下幾點:
-                            * 不要說 '感謝你的來信' 之類的話，因為客戶是從對談視窗輸入訊息的，不是寫信來的
-                            * 不能過度承諾
-                            * 要同理客戶的情緒
-                            * 要能夠盡量解決客戶的問題
-                            * 不要以回覆信件的格式書寫，請直接提供對談機器人可以直接給客戶的回覆
-                            ----------------------
-"
+                        content = "今天是" + DateTime.Now.ToString() + @"
+                            假設你是公司內部的人事系統輔助程式，透過對話完成相關作業，最終產生json內容回復。
+                            json內容包含{""startdate"":""請假開始時間"",""enddate"":""請假結束時間"",
+                                ""type"":""假種"",""agent"":""代理人""}
+                            ----------------------"
                     }
                 };
-
             //添加歷史對話紀錄
             foreach (var HistoryMessageItem in chatHistory)
             {
